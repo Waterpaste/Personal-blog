@@ -1,0 +1,21 @@
+/*标题*/
+h3{
+	font: normal 2em Georgia,sans-serif;
+	margin-left:15px;
+}
+.tool{
+	border-bottom: #99FFCC 1px solid;
+	margin:10px auto;
+}
+.tool span{
+
+	color:#333;
+	font-size: 14px;
+}
+.tool a{
+	color:green;
+
+}
+.tool a:hover{
+	color:#665;
+}

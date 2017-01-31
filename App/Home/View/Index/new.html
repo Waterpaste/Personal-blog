@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+  
+
+    <title>洛书 | 博客</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/base.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="__PUBLIC__/css/offcanvas.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/new.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="__PUBLIC__/js/jquery.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/highlight/styles/zenburn.css">
+    <script src="__PUBLIC__/highlight/highlight.pack.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  
+  <body>
+    <include file="Public/header"/>
+    
+	
+	<div class="container"> 
+  <article>
+   
+      <div class="col-md-8 col-sm-12">               
+		<div class="panel panel-green-sea">
+		    <div class="panel-heading">
+		    <div>
+		        <volist name="new" id="vo">
+				   <h2 class="about_h">您现在的位置是：<a href="{:U('/Home/Index/index')}">首页</a>><a href="{:U('/c-'.$vo['cate_title']['id'])}/">{$vo.cate_title.title}</a></h2>
+				   <h2 class="c_titile">{$vo.p_title}</h2>
+				   <p class="box_c"><span class="d_time">发布时间：{$vo.date}</span><span>浏览（{$vo.count}）</span><span>评论览（{$count}）</span></p>
+			</div>	
+		    </div>
+		    <div class="panel-body bg-white">
+		    <div class="d3">
+				<ul class="infos">
+					<php>
+         	 			echo htmlspecialchars_decode($vo['content']);
+         			 </php>
+					<div class="copyright alert alert-success post-copyright">
+						<p>作者：{$vo.authour}</p>
+						<p>关键字：{$vo.s_title}</p>
+					</volist>
+						<p>
+						原文地址： 
+						<a href="#"><php>echo $_SERVER["REQUEST_SCHEME"].'://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];</php></a>
+						</p>
+					</div>
+				 </ul>
+				<div class="article-pager bs-example">
+							<ul class="pager">
+							<li class="previous">
+							<if condition="isset($front)">
+								<a class="gotoArchive" rel="prev" href="{:U('/n-'.$front['id'])}">上一篇：{$front['p_title']}</a>
+							</if>
+							</li>
+							<li class="next" >
+							<if condition="isset($after)">
+								<a class="gotoArchive" rel="next" href="{:U('/n-'.$after['id'])}">下一篇：{$after['p_title']}</a>
+							</if>
+							</li>
+							</ul>
+							
+					</div>
+					
+		    </div>	
+		   </div>   
+		</div>
+		<nav style="text-align:right; margin:20px 0;"><a href="#commentform" style="font-size:14px; padding:10px 0; font-weight:normal;">我要评论 &#187;</a></nav>
+		<h3 id="comments-title" class="comments-header alert alert-info"> {$count}条评论 </h3>
+		<volist name="commen" id="co">
+		<if condition="$co['pid'] eq 0">
+		<div class="panel panel-default">
+			<div id="comment" class="panel-heading">
+			<div class="commentList "  style="padding-left:{$p['level']-1}cm">		
+			
+				<div class="pull-left">
+					<span><php>
+						if($co['pid']==0){
+							static $num=1;
+							echo $num;
+							$num++;
+							}
+					</php>楼</span>
+					<span class="glyphicon glyphicon-user"></span>
+					<span>{$co.author}</span>
+				</div>	
+			<div class="pull-right">
+				<span class="glyphicon glyphicon-time"></span>
+				{$co.date}
+			</div>
+			<div class="clearfix"></div>
+			</div>
+			<div class="panel-body">
+				{$co.content}
+			<hr>
+			<div class="pull-right">
+				<span class="glyphicon glyphicon-edit"></span>
+				<a class="hf" id="{$co.id}" style="cursor:pointer;">回复</a>
+			</div>
+			
+			</div>
+		</div>
+		</div>
+		</if>
+		<volist name="commentList" id="p">
+		<if condition="$p['pid'] eq $co['id'] ">
+				<div class="commentList "  style="padding-left:{$p['level']-1}cm">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+						<div class="pull-left">
+						<span>{$num-1 }楼</span>
+						<span class="glyphicon glyphicon-user"></span>
+						<span>{$p.author}</span>
+						</div>
+						<div class="pull-right">
+						<span class="glyphicon glyphicon-time"></span>
+						{$p.time}
+						</div>
+						<div class="clearfix"></div>
+						</div>
+						<div class="panel-body"> {$p.content} 
+							<div class="pull-right">
+							<span class="glyphicon glyphicon-edit"></span>
+							<a class="hf" id="{$p.id}" style="cursor:pointer;">回复</a>
+						</div>
+						</div>
+						
+					</div>
+				</div>
+			</if>
+	 </volist>
+	</volist> 
+		<nav style="text-align:right;">
+				{$page}
+		</nav>
+		
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">
+		<i class="fa fa-pencil"></i>
+		评论区
+		<small>
+		<a id="cancel-comment-reply-link" rel="nofollow" href="" style="display:none;"> 取消回复 </a>
+		</small>
+		</h3>
+		<form id="commentform" class="comment-form" novalidate="novalidate" action="{:U('/comment/addcomment')}" method="post">
+		<input id="pid" name="post_id" value="{$vo.id}" type="hidden">
+		<div class="row">
+			<div class="col-md-6" style="float:none">
+				<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-user"></span>
+					</div>
+					<input id="vname" class="form-control" size="20" name="author" placeholder="起个昵称吧(必填)" value="{$user}"  type="text" required="" />
+				</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+						<span class="glyphicon glyphicon-envelope"></span>
+						</div>
+						<input id="vemail" class="form-control" size="20" name="email" placeholder="请输入您的邮箱(可选)" value="{$email}" required="" type="text">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6" style="float:none">
+				<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-link"></span>
+					</div>
+					<input id="comment_url" class="form-control" size="20" name="comment_url" placeholder="请输入网址(可选)" value="{$url}" required="" type="text">
+				</div>
+				</div>
+			</div>
+		</div>
+		
+		<textarea id="comment" class="form-control" placeholder="赶快发表你的见解吧！" name="content" cols="30" rows="3" required=""> </textarea>
+		<div id="error" style="display: none;">#</div>
+		<p class="form-submit">
+		<input id="submit" class="hiddeninput" name="submit" value="发表评论" type="submit">
+		</p>
+		</form>
+		</div>
+	</div>
+	
+
+	
+     <div class="col-lg-4">
+        <include file="Public/right"/>
+        </div>
+	<!--r_box end --> 
+	</article>
+     </div>
+	
+
+      <include file="Public/footer"/> 
+     <script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(function() {    	
+            $(".hf").click(//点击回复按钮事件
+                    function(e) {
+                        var $this = $(this);
+                        if ($this.parent().parent().next().hasClass('hftext')) {
+                            $this.parent().parent().next().remove();
+                        } else {
+                            $this.parent().parent().after('<div class="hftext"><form id="commentform" class="comment-form" novalidate="novalidate" action="{:U(\'Comment/addcomment\')}" method="post" role="form" ><input id="pid" type="hidden" name="pid" value="{$vo.id}"/><input type="hidden" name="post_id" value={$vo.id}> <div class="row"><div class="col-md-6" style="float:none"><div class="form-group"><div class="input-group"><div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div><input id="vname" class="form-control" size="20" name="author" placeholder="起个昵称吧" value="{$user}" required="" type="text"></div></div></div><div class="col-md-6"><div class="form-group"><div class="input-group"><div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div><input id="vemail" class="form-control" size="20" name="email" placeholder="请输入您的邮箱" value="{$email}" required="" type="text"></div></div></div><div class="col-md-6" style="float:none"><div class="form-group"><div class="input-group"><div class="input-group-addon"><span class="glyphicon glyphicon-link"></span></div><input id="vname" class="form-control" size="20" name="comment_url" placeholder="请输入网址" value="{$url}" required="" type="text"></div></div></div></div><textarea id="comment" class="form-control" placeholder="赶快发表你的见解吧！" name="content" cols="30" rows="3" required=""> </textarea> <p class="form-submit"><input id="submit" class="hiddeninput" name="submit" value="发表评论" type="submit"></p> </form></div>');
+                            var v_id = $(e.target).attr('id');//获取元素id;
+                            $("#pid").val(v_id);                            
+                        }
+
+                        $(".submit-btn").click(function() {
+                            var $this = $(this);
+                            var name = $this.parent().siblings().children('.name1').val();
+                            var content = $this.parent().siblings().children('.comment').val();
+                            if (name == "" || content == "") {
+                                alert("昵称或者评论不能为空哦");
+                                return false;
+                            }
+                        });
+                    });
+            $(".submit-btn").click(function() {
+                var $this = $(this);
+                var name = $this.parent().siblings().children('.name1').val();
+                var content = $this.parent().siblings().children('.comment').val();
+                if (name == "" || content == "") {
+                    alert("昵称或者评论不能为空哦");
+                    return false;
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
+    

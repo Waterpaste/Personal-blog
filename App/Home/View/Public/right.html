@@ -1,0 +1,68 @@
+<meta charset="utf-8">
+<div class="panel panel-default" >
+			<volist name="about" id="a">
+			<div class="panel-heading"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;关于{$a.s_name}</div>
+			
+			<div class="panel-body" style="margin-bottom:10px;">
+				<img class="img-responsive pull-left mr15" src="{$a.slogo}" alt="洛书博客"  width="145" height="145">
+				{$a.sdescription}
+				{$a.ps},更多信息请点击
+				</volist>
+				<a href="{:U('About/index')}" target="_blank">关于本站</a>。
+				<div class="gzwm">
+					<ul>
+						<li>
+							<a class="github" href="https://github.com/Waterpaste" target="_blank" title="GitHub"></a>
+						</li>
+						<li>
+							<a class="xlwb" href="http://weibo.com/u/2298628981" target="_blank" title="新浪微博"></a>
+						</li>
+						<li>
+							<a class="twitter" href="http://www.twitter.com/" title="推特"></a>
+						</li>
+					</ul>
+				</div>
+			</div>		
+		</div>
+		
+		
+		<div class="panel panel-default" >
+			<div class="panel-heading"><span class="glyphicon glyphicon-fire"></span>&nbsp;&nbsp;热门文章</div>
+			<volist name="hotpost" id="h">
+			<ul class="list-group">
+				<li class="list-group-item"><a href="{:U('/n-'.$h['id'])}"  >{$h.p_title}</a><span class="badge">{$h.count}</span></li>
+				
+			</ul>
+			</volist>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;目录分类</div>
+			  <ul class="catalog">
+			  <volist name="cates" id="c">
+				<li class="list-group-item"> <a href="{:U('/c-'.$c['id'])}"><span class="label label-info">{$i}</span>&nbsp;&nbsp;&nbsp;{$c.title}</a></li>
+			  </volist>
+			  </ul>
+		</div>
+	
+		<div class="panel panel-warning">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" 
+				   href="#collapseFour" class="title">
+					<span class="glyphicon glyphicon-cloud newicon"></span>&nbsp;&nbsp;友情链接 >>
+				</a>
+			</h4>
+		</div>
+		<div id="collapseFour" class="panel-collapse collapse">
+			<div class="panel-body">
+            <div class="links">
+				 <ul>
+				 <volist name="friend" id="f" empty="暂时木有数据">
+        			<li><a href="{$f.f_url}">{$f.f_title}</a></li>
+        		</volist>	
+      			</ul>
+            </div>
+			</div>
+		</div>
+		</div>

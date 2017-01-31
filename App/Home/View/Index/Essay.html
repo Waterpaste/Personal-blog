@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+  
+
+    <title>洛书 | 博客</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/base.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="__PUBLIC__/css/offcanvas.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/new.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="__PUBLIC__/js/jquery.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/highlight/styles/zenburn.css">
+    <script src="__PUBLIC__/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  
+  <body>
+    <include file="Public/header"/>
+    
+	
+	<div class="container"> 
+  <article>
+      <div class="col-md-8 col-sm-12">               
+		<volist name="commentList" id="p">
+		<if condition="$p['pid'] eq 0">
+		<div class="panel panel-default">
+			<div id="comment" class="panel-heading">
+			<div class="commentList "  style="padding-left:{$p['level']-1}cm">		
+			
+				<div class="pull-left">
+					<span><php>
+						if($p['pid']==0){
+							static $num=1;
+							echo $num;
+							$num++;
+							}
+					</php>楼</span>
+					<span class="glyphicon glyphicon-user"></span>
+					<span>{$p.author}</span>
+				</div>	
+			<div class="pull-right">
+				<span class="glyphicon glyphicon-time"></span>
+				{$p.time}
+			</div>
+			<div class="clearfix"></div>
+			</div>
+			<div class="panel-body">
+				{$p.content}
+			<hr>
+			<div class="pull-right">
+				<span class="glyphicon glyphicon-edit"></span>
+				<a class="hf" id="{$p.id}" style="cursor:pointer;">回复</a>
+			</div>
+			
+			</div>	
+		</div>
+		</div>
+		</if>
+		<if condition="$p['pid'] neq 0 ">
+				<div class="commentList "  style="padding-left:{$p['level']-1}cm">
+					<div class="panel panel-default"  id="content">
+						<div class="panel-heading">
+						<div class="pull-left">
+						<span>{$num-1 }楼</span>
+						<span class="glyphicon glyphicon-user"></span>
+						<span>{$p.author}</span>
+						</div>
+						<div class="pull-right">
+						<span class="glyphicon glyphicon-time"></span>
+						{$p.time}
+						</div>
+						<div class="clearfix"></div>
+						</div>
+						<div class="panel-body"> {$p.content} 
+							<div class="pull-right">
+							<span class="glyphicon glyphicon-edit"></span>
+							<a class="hf" id="{$p.id}" style="cursor:pointer;">回复</a>
+						</div>
+						</div>
+						
+					</div>
+				</div>
+			</if>
+	 
+	</volist> 
+		
+		
+	</div>
+	
+
+	
+     <div class="col-lg-4">
+        <include file="Public/right"/>
+        </div>
+	<!--r_box end --> 
+	</article>
+     </div>
+	
+
+      <include file="Public/footer"/> 
+     <script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery.qqFace.js" ></script>
+    <script type="text/javascript">
+        $(function() {    	
+            $(".hf").click(//点击回复按钮事件
+                    function(e) {
+                        var $this = $(this);
+                        if ($this.parent().parent().next().hasClass('hftext')) {
+                            $this.parent().parent().next().remove();
+                        } else {
+                            $this.parent().parent().after('<div class="hftext"><form id="commentform" class="comment-form" novalidate="novalidate" action="{:U(\'Essay/add\')}" method="post" role="form" ><input id="pid" type="hidden" name="pid" value="{$vo.id}"/><input type="hidden" name="post_id" value={$vo.id}> <div class="row"><div class="col-md-6" style="float:none"><div class="form-group"><div class="input-group"><div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div><input id="vname" class="form-control" size="20" name="author" placeholder="起个昵称吧（必选）" value="{$user}" required="" type="text"></div></div></div><div class="col-md-6"><div class="form-group"><div class="input-group"><div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div><input id="vemail" class="form-control" size="20" name="email" placeholder="请输入您的邮箱(可选)" value="{$email}" required="" type="text"></div></div></div><div class="col-md-6" style="float:none"><div class="form-group"><div class="input-group"><div class="input-group-addon"><span class="glyphicon glyphicon-link"></span></div><input id="vname" class="form-control" size="20" name="url" placeholder="请输入网址（可选）" value="{$url}" required="" type="text"></div></div></div></div><textarea id="comment" class="form-control" placeholder="赶快发表你的见解吧！" name="content" cols="30" rows="3" required=""> </textarea> <p class="form-submit"><input id="submit" class="hiddeninput" name="submit" value="发表评论" type="submit"></p> </form></div>');
+                            var v_id = $(e.target).attr('id');//获取元素id;
+                            $("#pid").val(v_id);                            
+                        }
+
+                        $(".submit-btn").click(function() {
+                            var $this = $(this);
+                            var name = $this.parent().siblings().children('.name1').val();
+                            var content = $this.parent().siblings().children('.comment').val();
+                            if (name == "" || content == "") {
+                                alert("昵称或者评论不能为空哦");
+                                return false;
+                            }
+                        });
+                    });
+            $(".submit-btn").click(function() {
+                var $this = $(this);
+                var name = $this.parent().siblings().children('.name1').val();
+                var content = $this.parent().siblings().children('.comment').val();
+                if (name == "" || content == "") {
+                    alert("昵称或者评论不能为空哦");
+                    return false;
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
+    

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="洛书 | BLOG">
+    <meta name="author" content="洛书">
+    <title>洛书 | 博客</title>
+   <!-- Bootstrap core CSS -->
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/base.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="__PUBLIC__/css/offcanvas.css" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/highlight/styles/zenburn.css">
+    <script src="__PUBLIC__/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  
+  </head>
+ 
+  <body>
+    <include file="Public/header" />
+	
+ <div class="container"> 
+  <article>
+   
+      <div class="col-md-8 col-sm-12"  >
+      <div class="bloglist">
+      <volist name="searchs" id="s">
+      <div class="well well-lg">
+        <h3><a href="{:U('/n-'.$s[id])}">{$s.p_title}</a></h3>
+        <ul>
+          <p>
+          {$s.content|htmlspecialchars_decode}         	
+         </p>   
+        </ul>
+        <a href="{:U('New/index',array('id'=>$s['id']))}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+        <p class="autor"><span class="lm f_l"><a href="#">{$s.title}</a></span><span class="dtime f_l">{$s.date|mb_substr=0,10,'UTF-8'}</span><span class="viewnum f_r">浏览（<a href="#">{$s.count}</a>）</span><span class="pingl f_r">评论（<a href="#">{$s.comment}</a>）</span></p>
+        </div>      
+     </volist>      
+    
+	<nav class="page">
+        {$page}
+     </nav>
+      </div> 
+	  </div>
+	
+     <div class="col-md-6 col-lg-4 >
+        <include file="Public/right"/>
+        
+	<!--r_box end --> 
+	</article>
+     </div>
+    
+  
+
+
+
+   
+      
+    <!--tit01 end-->
+    
+    <include file="Public/footer"/> 
+  
+   
+
+
+
+

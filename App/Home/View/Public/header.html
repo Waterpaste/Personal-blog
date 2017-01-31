@@ -1,0 +1,29 @@
+<meta charset="utf-8"> 
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">BLOG</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul name="nav" class="nav navbar-nav">
+            <li class="{$ui.index}"><a href="{:U('Index/index')}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li class="{$ui.about}"><a href="{:U('About/index')}"><span class="glyphicon glyphicon-info-sign"></span> 关于本站</a></li>
+            <li><a href="{:U('Essay/index')}"><span class="glyphicon glyphicon-pencil"></span> 随笔</a></li>
+            <form id="searchform" class="navbar-form navbar-right" role="search" target="_blank" method="get" action="{:U('Search/index')}">
+                <div class="form-group">
+                    <input type="text" id="searchWords" name="searchWords" class="form-control" data-provide="typeahead" autocomplete="off" placeholder="请输入要搜索关键词">
+                </div>
+                <button type="submit" class="btn"  id="searchbtn">
+                    搜索
+                </button>
+            </form>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->

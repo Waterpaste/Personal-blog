@@ -1,0 +1,156 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+
+
+
+
+/*左文章列表*/
+.bloglist h2 { border-bottom: #474645 2px solid; margin: 0 8px 20px 8px; height: 26px; overflow: hidden; line-height: 28px; font-size: 16px; font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif; letter-spacing: 2px }
+.bloglist h2 p { background: #474645; width: 180px; color: #fff; text-align: center; box-shadow: #999 4px 5px 1px; }
+.bloglist h2 p span { color: #38b3d4; }
+.bloglist .well{background-color:#fff; box-shadow: 0 0 0 0px #fbfbfb, 1px 1px 6px 1px rgba(10, 10, 0, 0.5)}
+.bloglist h3{font-size:19px; font-weight: bold; transition: all .5s; margin-top:0px; margin-bottom: 15px}
+.bloglist h3 a { color: #474645; }
+.bloglist h3 a:hover { color: #066; text-decoration: underline }
+.autor { overflow: hidden; clear: both; margin: 0; display: inline-block; color: #838383; width: 100%;  }
+.autor span { margin: 0 10px 0 0; padding-left: 20px }
+.autor span a { color: #759b08; }
+.autor span a:hover { text-decoration: underline }
+.lm { background: url(../images/newsbg01.png) no-repeat left center }
+.dtime { background: url(../images/newsbg02.png) no-repeat left center }
+.viewnum { background: url(../images/newsbg04.png) no-repeat left center }
+.pingl { background: url(../images/newsbg03.png) no-repeat left center }
+a.readmore {color:#16a085;  padding: 5px 10px; float: right; margin: 20px 0 0 0}
+a.readmore:hover{color:#694a48}
+.blogs::before { content: ""; width: 10px; height: 10px; border-radius: 50%; position: absolute; background: #cac1c1; border: 2px solid #fff; left: -27px; -webkit-transition: all 1s; -moz-transition: all 1s; -o-transition: all 1s; transition: all 1s; }
+
+/*分页*/
+.page{
+	text-align:center;	
+}
+/* 关注我样式 */
+
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    border: 0 none;
+}
+.panel-body  a {
+    color: #16a085;
+    text-decoration: none;
+	background-color: transparent;
+}
+.panel-body a:hover{
+	color: #labc9c;
+	text-decoration: underline;
+}
+.gzwm ul {
+    margin: 5px 0;
+    overflow: hidden;
+    width: 100%;
+}
+.gzwm li {
+    float: left;
+    margin: 0 18px 0 5px;
+    width: 52px;
+}
+.gzwm li a {
+    color: #747f8c;
+    float: left;
+    font-family: "Microsoft YaHei",SimSun;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    padding-top: 60px;
+    text-align: center;
+    width: 52px;
+}
+.gzwm .github {
+    background: transparent url("../images/ico_github.png") no-repeat scroll 0 0;
+}
+.gzwm .github:hover {
+    background: transparent url("../images/ico_github2.png") no-repeat scroll 0 0;
+    color: #000;
+}
+.gzwm .xlwb {
+    background: transparent url("../images/ico_xlwb.png") no-repeat scroll 0 0;
+}
+.gzwm .xlwb:hover {
+    background: transparent url("../images/ico_xlwb2.png") no-repeat scroll 0 0;
+    color: #000;
+}
+.gzwm .twitter {
+    background: transparent url("../images/ico_twitter.png") no-repeat scroll 0 0;
+}
+.gzwm .twitter:hover {
+    background: transparent url("../images/ico_twitter2.png") no-repeat scroll 0 0;
+}
+.gzwm ul {
+    margin: 5px 0;
+    overflow: hidden;
+    width: 100%;
+}
+.gzwm li {
+    float: left;
+    margin: 0 0 0 43px;
+    width: 52px;
+}
+.gzwm li a {
+    color: #747f8c;
+    float: left;
+    font-family: "Microsoft YaHei",SimSun;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    padding-top: 60px;
+    text-align: center;
+    width: 52px;
+}
+.gzwm .github {
+    background: transparent url("../images/ico_github.png") no-repeat scroll 0 0;
+}
+.gzwm .github:hover {
+    background: transparent url("../images/ico_github2.png") no-repeat scroll 0 0;
+    color: #000;
+}
+.gzwm .xlwb {
+    background: transparent url("../images/ico_xlwb.png") no-repeat scroll 0 0;
+}
+.gzwm .xlwb:hover {
+    background: transparent url("../images/ico_xlwb2.png") no-repeat scroll 0 0;
+    color: #000;
+}
+.gzwm .douban {
+    background: transparent url("../images/ico_db.png") no-repeat scroll 0 0;
+}
+.gzwm .douban:hover {
+    background: transparent url("../images/ico_db2.png") no-repeat scroll 0 0;
+    color: #000;
+}
+.gzwm .twitter {
+    background: transparent url("../images/ico_twitter.png") no-repeat scroll 0 0;
+}
+.gzwm .twitter:hover {
+    background: transparent url("../images/ico_twitter2.png") no-repeat scroll 0 0;
+}s
+/*鐩綍鍒嗙被*/
+
+/*鍙嬫儏閾炬帴*/
+.links ul { margin: 20px 0 20px 20px }
+ .links ul li a:hover { color:#F60 }
+ .links ul li {border-bottom:#99FFCC 1px solid;}
+.links ul li a, .links ul li a { color:#999999; margin:10px auto; }
+
+
+
+
+
+
