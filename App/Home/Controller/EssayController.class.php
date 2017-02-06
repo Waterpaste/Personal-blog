@@ -4,6 +4,8 @@ use Think\Controller;
 class EssayController extends Controller{
 	public function index(){
 		$this->assign('commen',$this->show());
+		$ui['essay'] = 'active';
+		$this->assign('ui',$ui);
 		$comment = $this->CommentList($pid = 0, $commentList = array(), $spac = 0);
 		//var_dump($comment);
 		$this->assign('commentList', $comment);

@@ -22,7 +22,6 @@
     <script src="/luoshublog/Public/js/jquery.js"></script>
     <link rel="stylesheet" href="/luoshublog/Public/highlight/styles/zenburn.css">
     <script src="/luoshublog/Public/highlight/highlight.pack.js"></script>
-    
     <script>hljs.initHighlightingOnLoad();</script>
   </head>
   

@@ -42,7 +42,7 @@
           <ul name="nav" class="nav navbar-nav">
             <li class="<?php echo ($ui["index"]); ?>"><a href="<?php echo U('Index/index');?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
             <li class="<?php echo ($ui["about"]); ?>"><a href="<?php echo U('About/index');?>"><span class="glyphicon glyphicon-info-sign"></span> 关于本站</a></li>
-            <li><a href="<?php echo U('Essay/index');?>"><span class="glyphicon glyphicon-pencil"></span> 随笔</a></li>
+            <li class="<?php echo ($ui["essay"]); ?>"><a href="<?php echo U('Essay/index');?>"><span class="glyphicon glyphicon-pencil"></span> 随笔</a></li>
             <form id="searchform" class="navbar-form navbar-right" role="search" target="_blank" method="get" action="<?php echo U('Search/index');?>">
                 <div class="form-group">
                     <input type="text" id="searchWords" name="searchWords" class="form-control" data-provide="typeahead" autocomplete="off" placeholder="请输入要搜索关键词">
