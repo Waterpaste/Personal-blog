@@ -20,7 +20,7 @@ return array(
 	'auto_timestamp' => true,
 	
 	//页面Trace   页面调试工具
-	'SHOW_PAGE_TRACE' =>true,
+	//'SHOW_PAGE_TRACE' =>true,
 
 		
 	'URL_ROUTER_ON' => TRUE,
